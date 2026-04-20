@@ -1,0 +1,16 @@
+services:
+
+  mock-core-api:
+    build: ./mock-core-api
+
+  orchestrator:
+    build: ./orchestrator
+    depends_on:
+    - mock-core-api
+
+  gateway:
+    build: ./gateway
+    ports:
+      - "8080:80"
+    depends_on:
+      - orchestrator
