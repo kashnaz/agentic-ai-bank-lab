@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-customers = {
+customer = {
     "123": {
         "name":"Ahmed",
         "balance":50000,
@@ -10,9 +10,9 @@ customers = {
     }
 }
 
-@app.get("/customers/{customer_id}")
+@app.get("/customer/{customer_id}")
 def get_customer(customer_id: str):
-    return customers.get(
+    return customer.get(
         customer_id,
         {"error":"Customer not found"}
     )
